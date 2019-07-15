@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
@@ -5,8 +6,9 @@ function getToken() {
 }
 
 function findContacts() {
-  const startDate = $('#startDate')
-  const endDate = '2019-07-08'
+  debugger
+  const startDate = $('#startDate').value
+  const endDate = $('#endDate').value
   fetch(
     `https://api-sandbox.tomnx.com/api/corereports/birthday?startDate=${startDate}&endDate=${endDate}`,
     {
@@ -21,7 +23,7 @@ function findContacts() {
 
 function showResults(json) {
   //debugger;
-  //use this function to display the results from forking via the API
+  //use this function to display the results
   $('#results').html(createLink(json));
 }
 
