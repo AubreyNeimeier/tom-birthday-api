@@ -1,18 +1,19 @@
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '89f16f31dd333d4bfe160a0d3d66c9cead0f9cc5';
+  return 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoibW9ydGdhZ2UiLCJvcmdJZCI6NSwicm9sZUlkIjo4LCJncmFudF90eXBlIjoiYWNjZXNzX3Rva2VuIiwiaWF0IjoxNTYzMjAzMDk0LCJleHAiOjE1NjMyODk0OTR9.GQLHKTZcSI8cOLQFjAVOcNE-UkQB_dlsBUkFjNqJt_k';
 }
 
-function forkRepo() {
+function findBirthdays() {
   //use fetch to fork it!
-  const repo = 'learn-co-curriculum/js-ajax-fetch-lab'; 
+  const startDate = '2019-07-01'
+  const endDate = '2019-07-08'
   fetch(
-    `https://api.github.com/repos/${repo}/forks`,
+    `https://api-sandbox.tomnx.com/api/corereports/birthday?startDate=${startDate}&endDate=${endDate}`,
     {
       method:'POST',
       headers: {
-        Authorization: `token ${getToken()}`
+        Authorization: `${getToken()}`
       }
     })
   .then(res => res.json())
@@ -25,49 +26,8 @@ function showResults(json) {
   $('#results').html(createLink(json));
 }
 
-function createLink(json){
-  return `<a href=${json.html_url}> Your Fork </a>`
+function createTable(json){
+  return `<td`
 }
 
-function createIssue() {
-  //use this function to create an issue based on the values input in index.html
-  const issue = {
-    title: document.getElementById("title").value,
-    body: document.getElementById("body").value
-  }
 
-  fetch(
-    `https://api.github.com/repos/aubreyneimeier/js-ajax-fetch-lab/issues`, 
-    {
-      method: "POST",
-      body: JSON.stringify(issue),
-      headers: {
-        Authorization: `token ${getToken()}`
-      }
-    }
-  )
-  getIssues()
-}
-
-function getIssues() {
-  //once an issue is submitted, fetch all open issues to see the issues you are creating
-  fetch(`https://api.github.com/repos/aubreyneimeier/js-ajax-fetch-lab/issues`,{
-    headers: {
-      Authorization: `token ${getToken()}`
-    }
-    })
-    .then(issues => issues.json())
-    .then(json => showIssues(json))   
-}
-
-function showIssues(json){
-  //debugger;
-  $("#issues").html(createIssues(json));
-}
-
-function createIssues(json){
-  return json.map(issue => 
-  `${issue.title} : ${issue.body} <br> `)
-}
-
-// .then(json => showIssues(json))

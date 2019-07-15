@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <title>JavaScript fetch() Lab</title>
+    <title>TOM Birthday Report</title>
     <style>
       .flexbox-container {
         display: -ms-flex;
@@ -28,15 +28,14 @@
     </main>
     <div class="flexbox-container">
       <div>
-        <h3>Create Fork</h3>
-        <p><a href="#" onclick="forkRepo()">Fork Repository</a></p>
         <div id="results"></div>
       </div>
       <div>
-        <h3>Issues</h3>
+        <h3>Custom Date</h3>
         <div>
-          Issue Title: <input type="text" id="title"><br> Issue Text: <input type="text" id="body"><br>
-          <a href="#" id="search" onclick="createIssue()">Create Issue</a>
+          <input type="date" id="startDate"><br>
+          <input type="date" id="endDate"><br>
+          <a href="#" id="search" onclick="findBirthdays()">Filter</a>
         </div>
         <div id="issues"></div>
       </div>
