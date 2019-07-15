@@ -1,4 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
@@ -6,9 +6,9 @@ function getToken() {
 }
 
 function findContacts() {
-  debugger
-  const startDate = $('#startDate').value
-  const endDate = $('#endDate').value
+
+  const startDate = '2019-07-01'            //need to use jquery to load dynamically, but jquery not running properly$('#startDate').value
+  const endDate = '2019-07-14'                       //$('#endDate').value
   fetch(
     `https://api-sandbox.tomnx.com/api/corereports/birthday?startDate=${startDate}&endDate=${endDate}`,
     {
@@ -21,19 +21,18 @@ function findContacts() {
   .then(json => createTable(json))
 }
 
-function showResults(json) {
-  //debugger;
-  //use this function to display the results
-  $('#results').html(createLink(json));
-}
 
 function createTable(json){
   const contacts = json.data.map(con => 
-  `<ul>con.userFullName</ul>`)
-  debugger
-  $('#results').innerHTML = contacts
+  `<ul>${con.fullName} - ${con.birthdayAge} - ${con.birthday} </ul>`)
+  //untested syntax- ${con.contact.contactInfo.phoneWork} - ${con.userFullName}
+  attachResults(contacts)
 }
 
 
-
+function attachResults(contacts) {
+  //debugger;
+  //use this function to display the results
+  $('#results').html(contacts);
+}
 
