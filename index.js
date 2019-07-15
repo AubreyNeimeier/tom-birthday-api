@@ -17,7 +17,7 @@ function findBirthdays() {
       }
     })
   .then(res => res.json())
-  .then(json => showResults(json))
+  .then(json => createTable(json))
 }
 
 function showResults(json) {
@@ -27,7 +27,13 @@ function showResults(json) {
 }
 
 function createTable(json){
-  return `<td`
+  debugger
+  // const contacts = json.data.map(con => 
+  // `<ul>con.userFullName</ul>`)
+  debugger
+  // $('#results').innerHTML = contacts
 }
+
+
 
 
